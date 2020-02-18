@@ -25,9 +25,6 @@
 
         function    getroles($userid){
 
-            // $sql    =   "select * from roles where userid=$userid";
-            // $rows   =   array();
-            // $result =   $this->connection->query($sql);
             $stmt   =   $this->connection->prepare("select * from roles where userid=?");
             $stmt->bind_param("i",$userid);
             $stmt->execute();
@@ -51,7 +48,6 @@
 
         function    validateusers($username, $userid){
 
-            //$sql        =   "select * from users where username='$username' or userid='$userid'";
             $stmt   =   $this->connection->prepare("select * from users where username=? or userid=?");
             $stmt->bind_param("si",$username,$userid);
             $stmt->execute();
@@ -112,8 +108,6 @@
 
         function    deleteusers($userid){
 
-            // $sql    =   "delete from users where userid=$userid";
-            // $sql2   =   "delete from roles where userid=$userid";
             $stmt   =   $this->connection->prepare("delete from users where userid=?");
             $stmt->bind_param("i",$userid);
             $stmt2  =   $this->connection->prepare("delete from roles where userid=?");
@@ -136,9 +130,6 @@
 
         function    loaduser($userid){
 
-            // $sql    =   "select * from users where userid=$userid";
-            // $rows   =   array();
-            // $result =   $this->connection->query($sql);
             $stmt   =   $this->connection->prepare("select * from users where userid=?");
             $stmt->bind_param("i",$userid);
             $stmt->execute();
@@ -162,9 +153,6 @@
 
         function    loadrole($userid){
 
-            // $sql    =   "select * from roles where userid=$userid";
-            // $rows   =   array();
-            // $result =   $this->connection->query($sql);
             $stmt   =   $this->connection->prepare("select * from roles where userid=?");
             $stmt->bind_param("i",$userid);
             $stmt->execute();
@@ -187,7 +175,6 @@
         }
         function    validateedit($username, $userid){
 
-            // $sql        =   "select * from users where username='$username' && userid<>$userid";
             $stmt   =   $this->connection->prepare("select * from users where username=? && userid<>?");
             $stmt->bind_param("si",$username,$userid);
             $stmt->execute();
